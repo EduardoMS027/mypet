@@ -1,0 +1,57 @@
+package com.mypet.myPetApp.config;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
+
+import com.mypet.myPetApp.entity.Petclient;
+import com.mypet.myPetApp.repository.PetclientRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class DataInitializer implements ApplicationListener<ContextRefreshedEvent>{
+
+    @Autowired
+    PetclientRepository petclientRepository;
+    
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+
+        List<Petclient> listPetclient = petclientRepository.findAll();
+        int idade = calculateAge("1997-01-27", "2019-04-11");
+
+        if(listPetclient.isEmpty()){
+            createPetclient("eduardoTest@gamil.com", "senhaTesteEduardo", "cliente", "Eduardo Marques da Silva", idade , 1, 5, 1);
+            createPetclient("email", "password", "tipoPerfil", "nomeCompleto", idade, 1, 5,
+             1);
+        }
+    
+    
+    }
+
+    public void createPetclient(String email, String password, String tipoPerfil, String nomeCompleto, 
+    int dataNascimento, int pet, int avaliacao, int endereco){
+
+        Petclient varPetclient = new Petclient(email, password, tipoPerfil, nomeCompleto, dataNascimento, pet, avaliacao, endereco);
+
+        petclientRepository.save(varPetclient);
+    }
+
+    public int calculateAge(String strBirthDate,String strCurrentDate) {
+        LocalDate birthDate;
+        LocalDate currentDate;
+        birthDate = LocalDate.parse(strBirthDate);
+        currentDate = LocalDate.parse(strCurrentDate);
+
+        return Period.between(extracted(birthDate), extracted(currentDate)).getYears();
+    }
+
+    private LocalDate extracted(LocalDate currentDate) {
+        return currentDate;
+    }
+}

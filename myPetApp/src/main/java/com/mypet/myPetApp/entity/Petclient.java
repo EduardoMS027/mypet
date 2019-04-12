@@ -1,15 +1,22 @@
 package com.mypet.myPetApp.entity;
 
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
+import com.mypet.myPetApp.entity.Endereco;
+import com.mypet.myPetApp.entity.Pet;
+
 @Entity
+@Table(name = "petclient")
 public class Petclient {
 
     @Id
@@ -21,18 +28,20 @@ public class Petclient {
     private String tipoPerfil;
     private String nomeCompleto;
     private int dataNascimento;
-    @OneToMany
-    private int pet;
     private int avaliacao;
-    @OneToMany
-    private int endereco;
+    
+    @OneToMany(mappedBy = "pet")
+    private Set<Pet> pets;
+
+    @OneToMany(mappedBy = "endereco")
+    private Set<Endereco> enderecos;
 
 
     public Petclient (){
 
     }
 
-    public Petclient (String email, String password, String tipoPerfil, String nomeCompleto, int dataNascimento, int pet, int avaliacao, int endereco){
+    public Petclient (String email, String password, String tipoPerfil, String nomeCompleto, int dataNascimento, int avaliacao){
     
         super();
         this.email = email;
@@ -40,9 +49,7 @@ public class Petclient {
         this.tipoPerfil = tipoPerfil;
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
-        this.pet = pet;
         this.avaliacao = avaliacao;
-        this.endereco = endereco;
     }
 
     /**
@@ -84,8 +91,8 @@ public class Petclient {
     /**
      * @return the pet
      */
-    public int getPet() {
-        return pet;
+    public Set<Pet> getPet() {
+        return pets;
     }
     /**
      * @return the tipoPerfil
@@ -132,8 +139,8 @@ public class Petclient {
     /**
      * @param pet the pet to set
      */
-    public void setPet(int pet) {
-        this.pet = pet;
+    public void setPet(Set<Pet> pets) {
+        this.pets = pets;
     }
     /**
      * @param tipoPerfil the tipoPerfil to set
@@ -145,14 +152,20 @@ public class Petclient {
     /**
      * @return the endereco
      */
-    public int getEndereco() {
-        return endereco;
+    public Set<Endereco> getEndereco() {
+        return enderecos;
     }
     /**
      * @param endereco the endereco to set
      */
-    public void setEndereco(int endereco) {
-        this.endereco = endereco;
+    public void setEndereco(Set<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + getId() + "Email: " + getEmail() + "Password: " + getPassword() + "Tipo de perfil: " + getTipoPerfil() + "Nome completo: " + getNomeCompleto() + "Data de nascimento: " + getDataNascimento() + "Pet: " + getPet() + "Avaliação: " + getAvaliacao() + "Endereço: " + getEndereco();
+    }
+
 
 }

@@ -23,21 +23,23 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         List<Petclient> listPetclient = petclientRepository.findAll();
-        int idade = calculateAge("1997-01-27", "2019-04-11");
+        
 
         if(listPetclient.isEmpty()){
-            createPetclient("eduardoTest@gamil.com", "senhaTesteEduardo", "cliente", "Eduardo Marques da Silva", idade , 1, 5, 1);
-            createPetclient("email", "password", "tipoPerfil", "nomeCompleto", idade, 1, 5,
-             1);
+            int idade = calculateAge("1997-01-27", "2019-04-11");
+
+
+            createPetclient("eduardoTest@gamil.com", "senhaTesteEduardo", "cliente", "Eduardo Marques da Silva", idade , 5);
+            createPetclient("email", "password", "tipoPerfil", "nomeCompleto", idade, 5);
         }
     
     
     }
 
     public void createPetclient(String email, String password, String tipoPerfil, String nomeCompleto, 
-    int dataNascimento, int pet, int avaliacao, int endereco){
+    int dataNascimento, int avaliacao){
 
-        Petclient varPetclient = new Petclient(email, password, tipoPerfil, nomeCompleto, dataNascimento, pet, avaliacao, endereco);
+        Petclient varPetclient = new Petclient(email, password, tipoPerfil, nomeCompleto, dataNascimento,  avaliacao);
 
         petclientRepository.save(varPetclient);
     }

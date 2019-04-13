@@ -14,7 +14,7 @@ import com.mypet.myPetApp.entity.Petclient;
 public class Pet {
 
     @Id
-    @Column(name = "PET_ID")
+    //@Column(name = "PET_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;

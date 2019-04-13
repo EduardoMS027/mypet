@@ -13,6 +13,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 
+/*
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent>{
 
@@ -22,7 +23,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        List<Petclient> listPetclient = petclientRepository.findAll();
+        List<Petclient> listPetcSlient = petclientRepository.findAll();
         
 
         if(listPetclient.isEmpty()){
@@ -57,3 +58,4 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         return currentDate;
     }
 }
+*/

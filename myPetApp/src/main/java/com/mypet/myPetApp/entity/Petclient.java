@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.UniqueElements;
@@ -30,11 +30,11 @@ public class Petclient {
     private int dataNascimento;
     private int avaliacao;
     
-    @OneToMany(mappedBy = "pet")
-    private Set<Pet> pets;
 
-    @OneToMany(mappedBy = "endereco")
-    private Set<Endereco> enderecos;
+    //private Set<Pet> pets;
+
+    
+   // private Set<Endereco> enderecos;
 
 
     public Petclient (){
@@ -82,18 +82,16 @@ public class Petclient {
     public int getDataNascimento() {
         return dataNascimento;
     }
-    /**
-     * @return the avaliacao
-     */
+    
     public Integer getAvaliacao() {
         return avaliacao;
     }
     /**
      * @return the pet
      */
-    public Set<Pet> getPet() {
-        return pets;
-    }
+  //  public Set<Pet> getPet() {
+   //     return pets;
+    //}
     /**
      * @return the tipoPerfil
      */
@@ -139,9 +137,9 @@ public class Petclient {
     /**
      * @param pet the pet to set
      */
-    public void setPet(Set<Pet> pets) {
-        this.pets = pets;
-    }
+   // public void setPet(Set<Pet> pets) {
+   //     this.pets = pets;
+   // }
     /**
      * @param tipoPerfil the tipoPerfil to set
      */
@@ -152,19 +150,19 @@ public class Petclient {
     /**
      * @return the endereco
      */
-    public Set<Endereco> getEndereco() {
-        return enderecos;
-    }
+  //  public Set<Endereco> getEndereco() {
+    //    return enderecos;
+  //  }
     /**
      * @param endereco the endereco to set
      */
-    public void setEndereco(Set<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }
+   // public void setEndereco(Set<Endereco> enderecos) {
+      //  this.enderecos = enderecos;
+   // }
 
     @Override
     public String toString() {
-        return "Id: " + getId() + "Email: " + getEmail() + "Password: " + getPassword() + "Tipo de perfil: " + getTipoPerfil() + "Nome completo: " + getNomeCompleto() + "Data de nascimento: " + getDataNascimento() + "Pet: " + getPet() + "Avaliação: " + getAvaliacao() + "Endereço: " + getEndereco();
+        return "Id: " + getId() + "Email: " + getEmail() + "Password: " + getPassword() + "Tipo de perfil: " + getTipoPerfil() + "Nome completo: " + getNomeCompleto() + "Data de nascimento: " + getDataNascimento()  + "Avaliação: " + getAvaliacao() ;
     }
 
 

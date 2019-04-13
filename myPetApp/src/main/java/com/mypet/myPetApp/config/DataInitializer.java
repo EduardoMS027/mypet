@@ -56,6 +56,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     private LocalDate extracted(LocalDate currentDate) {
         return currentDate;
-    }
+    }   
 }
 */

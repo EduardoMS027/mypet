@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
+import com.mypet.myPetApp.grupos.TipoGrupo;
+
 
 @Entity
 public class Petclient implements Serializable {
@@ -18,11 +20,10 @@ public class Petclient implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @UniqueElements
+    private Integer id;
     private String email;
     private String password;
-    private String tipoPerfil;
+    private Integer tipoPerfil;
     private String nomeCompleto;
     private int dataNascimento;
     private int avaliacao;
@@ -38,21 +39,26 @@ public class Petclient implements Serializable {
 
     }
 
-    public Petclient (String email, String password, String tipoPerfil, String nomeCompleto, int dataNascimento, int avaliacao){
-    
-        super();
-        this.email = email;
-        this.password = password;
-        this.tipoPerfil = tipoPerfil;
-        this.nomeCompleto = nomeCompleto;
-        this.dataNascimento = dataNascimento;
-        this.avaliacao = avaliacao;
-    }
+ 
 
-    /**
+    public Petclient(Integer id, String email, String password, TipoGrupo tipoPerfil, String nomeCompleto,
+			int dataNascimento, int avaliacao) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.tipoPerfil = tipoPerfil.getCod();
+		this.nomeCompleto = nomeCompleto;
+		this.dataNascimento = dataNascimento;
+		this.avaliacao = avaliacao;
+	}
+
+
+
+	/**
      * @return the id
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     /**
@@ -92,13 +98,13 @@ public class Petclient implements Serializable {
     /**
      * @return the tipoPerfil
      */
-    public String getTipoPerfil() {
-        return tipoPerfil;
+    public TipoGrupo getTipoPerfil() {
+        return TipoGrupo.toEnum(tipoPerfil);
     }
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     /**
@@ -140,8 +146,8 @@ public class Petclient implements Serializable {
     /**
      * @param tipoPerfil the tipoPerfil to set
      */
-    public void setTipoPerfil(String tipoPerfil) {
-        this.tipoPerfil = tipoPerfil;
+    public void setTipoPerfil(TipoGrupo tipoPerfil) {
+        this.tipoPerfil = tipoPerfil.getCod();
     }
 
     /**

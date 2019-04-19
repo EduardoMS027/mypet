@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mypet.myPetApp.controllers.PetclientController;
+import com.mypet.myPetApp.dto.PetClientDTO;
 import com.mypet.myPetApp.entity.Petclient;
 import com.mypet.myPetApp.grupos.TipoGrupo;
 import com.mypet.myPetApp.repository.PetclientRepository;
@@ -35,7 +36,8 @@ public class PetclientResource {
 	}
 	public  Petclient insert( Petclient obj) {
 		obj.setId(null);// se o obj tiver valendo alguma coisa o metado ira connsiderar uma atualização
-		return repository.save(obj);
+		obj =  repository.save(obj);
+		return obj;
 	}
 
 	public Petclient update(Petclient petClient) {
@@ -54,11 +56,25 @@ public class PetclientResource {
 			throw new DataInternalException("Não é possivel exclui porque há entidades relacionadas");
 		}
 	}
+	
+	public List<Petclient> findAll() {
+		return repository.findAll();
+	}
 
+	
+	public Petclient fromDto(PetClientDTO objDto) { // metado auxiliar que instacia uma categoria a partir de um DTO
+
+		return new Petclient(objDto.getId(), objDto.getNomeCompleto(), objDto.getEmail(), null, null,0,0); // nulo porque não temos os
+																								// daddos no DTO
+
+	}
+	
 	private void updateData(Petclient newObj, Petclient obj) { // metado aux para atualizar os campos do cliente,
 																// pegando o novo e colocando no antigo
 		newObj.setNomeCompleto(obj.getNomeCompleto());
 		newObj.setEmail(obj.getEmail());
+		newObj.setDataNascimento(obj.getDataNascimento());
+		newObj.setPassword(obj.getPassword());
 	}
 
 }

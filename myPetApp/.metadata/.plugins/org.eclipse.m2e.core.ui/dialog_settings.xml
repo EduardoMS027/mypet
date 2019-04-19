@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\yuri_\OneDrive\Documentos\MyPet\mypet\myPetApp"/>
 			<item value="C:\Users\yuri_\OneDrive\Documentos\MyPet"/>
 		</list>
 		<list key="projectNameTemplate">

@@ -2,14 +2,23 @@ package com.mypet.myPetApp.entity;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.UniqueElements;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mypet.myPetApp.grupos.TipoGrupo;
 
 
@@ -28,14 +37,30 @@ public class Petclient implements Serializable {
     private int dataNascimento;
     private int avaliacao;
     
+    
 
     //private Set<Pet> pets;
 
     
    // private Set<Endereco> enderecos;
 
+    @OneToMany(mappedBy = "petclient",cascade = CascadeType.ALL) // cascade, toda modificação que ocorrer no cliente ocorre em endereço com efeito cascata (quando apgar um cliente apaga um endereço tb)
+    private List<Endereco> endereco = new ArrayList<>();
+    
+    @JsonIgnore // pedidos do clinete não sera serealizados.
+	@OneToMany(mappedBy = "petclientServico")
+    private List<Servico> servicos = new ArrayList<>();
+    
+    @ElementCollection
+	@CollectionTable(name = "TELEFONE")//nome da tabela
+	private Set<String> telefones = new HashSet<>();//permite não repetir valores(represanta os conjuntos de valores )
+	
+    
+  
 
-    public Petclient (){
+
+
+	public Petclient (){
 
     }
 
@@ -47,7 +72,7 @@ public class Petclient implements Serializable {
 		this.id = id;
 		this.email = email;
 		this.password = password;
-		this.tipoPerfil = tipoPerfil.getCod();
+		this.tipoPerfil = (tipoPerfil==null) ? null : tipoPerfil.getCod(); //operador ternario ..  na intaciação não aceita nullo precisa de uma condicional por conta do getCod
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.avaliacao = avaliacao;
@@ -149,8 +174,42 @@ public class Petclient implements Serializable {
     public void setTipoPerfil(TipoGrupo tipoPerfil) {
         this.tipoPerfil = tipoPerfil.getCod();
     }
+    public List<Endereco> getEndereco() {
+  		return endereco;
+  	}
 
-    /**
+
+
+  	public void setEndereco(List<Endereco> endereco) {
+  		this.endereco = endereco;
+  	}
+  	
+
+    public List<Servico> getServicos() {
+		return servicos;
+	}
+
+
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+
+
+	public Set<String> getTelefones() {
+		return telefones;
+	}
+
+
+
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
+	}
+
+
+
+	/**
      * @return the endereco
      */
   //  public Set<Endereco> getEndereco() {
@@ -163,10 +222,41 @@ public class Petclient implements Serializable {
       //  this.enderecos = enderecos;
    // }
 
+	
+	
     @Override
     public String toString() {
         return "Id: " + getId() + "Email: " + getEmail() + "Password: " + getPassword() + "Tipo de perfil: " + getTipoPerfil() + "Nome completo: " + getNomeCompleto() + "Data de nascimento: " + getDataNascimento()  + "Avaliação: " + getAvaliacao() ;
     }
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Petclient other = (Petclient) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 
 
 }

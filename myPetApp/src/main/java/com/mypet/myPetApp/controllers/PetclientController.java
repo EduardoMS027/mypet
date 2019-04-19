@@ -12,13 +12,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.mypet.myPetApp.repository.PetclientRepository;
 import com.mypet.myPetApp.service.PetclientResource;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
+import com.mypet.myPetApp.dto.PetClientDTO;
 import com.mypet.myPetApp.entity.Petclient;
 
 @RestController
@@ -29,6 +31,16 @@ public class PetclientController {
 	private PetclientResource service;
 
     
+    
+    
+    @RequestMapping( method = RequestMethod.GET) // para bater em um end pont com id
+	public ResponseEntity <List<PetClientDTO>> findAll( Integer id) {
+    	List<Petclient> list = service.findAll();
+    	List<PetClientDTO> listDto = list.stream().map(obj -> new PetClientDTO(obj)).collect(Collectors.toList()); // stream percorre a lista, map realiza uma operação para cada elemento da lista,collector realiza a transformação para lista novamente
+		
+		return ResponseEntity.ok().body(listDto);
+
+	}
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET) // para bater em um end pont com id
 	public ResponseEntity<Petclient> find(@PathVariable Integer id) {

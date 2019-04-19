@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mypet.myPetApp.entity.Servico;
-import com.mypet.myPetApp.service.ServicoResource;
+import com.mypet.myPetApp.service.ServicoService;
 
 @RestController
 @RequestMapping(value = "/servicos")
@@ -18,7 +18,7 @@ public class ServicoController {
 	//private PedidoService pedidoService;
 	
 	 @Autowired
-	 private ServicoResource servicoResource;
+	 private ServicoService servicoResource;
 	
 	
 	@RequestMapping(value= "/{id}", method=RequestMethod.GET)// para bater em um end pont com id

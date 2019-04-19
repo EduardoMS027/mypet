@@ -9,7 +9,7 @@ import com.mypet.myPetApp.repository.ServicoRepository;
 import com.mypet.myPetApp.service.exceptions.ObjectNotFoundException;
 
 @Service
-public class ServicoResource {
+public class ServicoService {
 
 	@Autowired
 	ServicoRepository servicoRepository;

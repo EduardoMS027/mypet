@@ -1,7 +1,7 @@
 package com.mypet.myPetApp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,15 +12,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
-import com.mypet.myPetApp.repository.PetclientRepository;
-import com.mypet.myPetApp.service.PetclientResource;
+import javax.validation.Valid;
 
-import javassist.tools.rmi.ObjectNotFoundException;
+
+import com.mypet.myPetApp.service.PetclientService;
+
+
 
 import com.mypet.myPetApp.dto.PetClientDTO;
+import com.mypet.myPetApp.dto.PetClientInsertDTO;
 import com.mypet.myPetApp.entity.Petclient;
 
 @RestController
@@ -28,7 +31,7 @@ import com.mypet.myPetApp.entity.Petclient;
 public class PetclientController {
 
     @Autowired
-	private PetclientResource service;
+	private PetclientService service;
 
     
     
@@ -51,8 +54,9 @@ public class PetclientController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Petclient obj) { // requestBody faz o json ser convertido para obj
+	public ResponseEntity<Void> insert(@Valid @RequestBody PetClientInsertDTO objDto) { // requestBody faz o json ser convertido para obj
 																		// java automaticamente
+		Petclient obj = service.fromDto(objDto);//coverto Dto para objeto entidade
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -60,9 +64,9 @@ public class PetclientController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Petclient obj, @PathVariable Integer id) {// receber o obejto json e
+	public ResponseEntity<Void> update(@Valid @RequestBody PetClientDTO objDto, @PathVariable Integer id) {// receber o obejto json e
 																								// tambem o parametro da
-																								// URL
+		Petclient obj = service.fromDto(objDto);																						// URL
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

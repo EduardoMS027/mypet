@@ -2,7 +2,9 @@ package com.mypet.myPetApp.grupos;
 
 public enum TipoGrupo {
 
-	JURIDICA(1, "PETVET, PETSHOP"), FISICAJURIDICA(2, "PETWALKER, PETHOME"), CLIENTE(3, "PETCLIENT");
+	JURIDICA(1, "PETVET, PETSHOP"), 
+	FISICAJURIDICA(2, "PETWALKER, PETHOME"), 
+	CLIENTE(3, "PETCLIENT");
 
 	private Integer cod;
 	private String descricao;

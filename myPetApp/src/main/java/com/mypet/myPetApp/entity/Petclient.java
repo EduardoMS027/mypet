@@ -34,8 +34,9 @@ public class Petclient implements Serializable {
     private String password;
     private Integer tipoPerfil;
     private String nomeCompleto;
-    private int dataNascimento;
+    private String dataNascimento;
     private int avaliacao;
+    private String cpf;
     
     
 
@@ -67,7 +68,7 @@ public class Petclient implements Serializable {
  
 
     public Petclient(Integer id, String email, String password, TipoGrupo tipoPerfil, String nomeCompleto,
-			int dataNascimento, int avaliacao) {
+    		String dataNascimento, int avaliacao,String cpf) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -76,6 +77,7 @@ public class Petclient implements Serializable {
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.avaliacao = avaliacao;
+		this.cpf = cpf;
 	}
 
 
@@ -107,7 +109,7 @@ public class Petclient implements Serializable {
     /**
      * @return the dataNascimento
      */
-    public int getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
     
@@ -153,7 +155,7 @@ public class Petclient implements Serializable {
     /**
      * @param dataNascimento the dataNascimento to set
      */
-    public void setDataNascimento(int dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
     /**
@@ -256,6 +258,18 @@ public class Petclient implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 

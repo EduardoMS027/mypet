@@ -11,6 +11,8 @@ public class PetClientDTO implements Serializable{
 	    private Integer id;
 	    private String email;
 	    private String nomeCompleto;
+	    private String password;
+	    private String dataNascimento;
 	   
 	    
 	    public PetClientDTO() {
@@ -19,9 +21,12 @@ public class PetClientDTO implements Serializable{
 
 		public PetClientDTO(Petclient petClient) {
 		
-			id = petClient.getId();
-			email = petClient.getEmail();
-			nomeCompleto = petClient.getNomeCompleto();
+			this.id = petClient.getId();
+			this.email = petClient.getEmail();
+			this.nomeCompleto = petClient.getNomeCompleto();
+			this.password = petClient.getPassword();
+			this.dataNascimento = petClient.getDataNascimento();
+			
 			
 		}
 
@@ -47,6 +52,23 @@ public class PetClientDTO implements Serializable{
 
 		public void setNomeCompleto(String nomeCompleto) {
 			this.nomeCompleto = nomeCompleto;
+		}
+
+
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public String getDataNascimento() {
+			return dataNascimento;
+		}
+
+		public void setDataNascimento(String dataNascimento) {
+			this.dataNascimento = dataNascimento;
 		}
 
 	

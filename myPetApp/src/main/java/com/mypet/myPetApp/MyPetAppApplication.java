@@ -30,17 +30,18 @@ public class MyPetAppApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 
 		Petclient pet1 = new Petclient(null, "Yuricesarr@gmail.com", "12345", TipoGrupo.CLIENTE, "Yur1 Cesar", "210405", 0, null);
-		petClientRepository.save(pet1);
+		//petClientRepository.save(pet1);
 
-		Petclient pet2 = new Petclient(null, "Yuricesarr@gmail.com", "12345", TipoGrupo.CLIENTE, "Yur1 Cesar", "210405", 0, null);
-		petClientRepository.save(pet2);
+		Petclient pet2 = new Petclient(null, "ronaldinho@gmail.com", "r10", TipoGrupo.CLIENTE, "ronaldinho brilha", "210405", 0, null);
+		//petClientRepository.save(pet2);
 
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", pet2);
-
 		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "centro", "8777012", pet1);
-		pet1.getEndereco().addAll(Arrays.asList(e1, e2)); // cliente conhecendo seu endereços
-
-		petClientRepository.saveAll(Arrays.asList(pet1));
+		
+		pet1.getEndereco().addAll(Arrays.asList(e2)); // cliente conhecendo seu endereços
+		pet2.getEndereco().addAll(Arrays.asList(e1));
+		
+		petClientRepository.saveAll(Arrays.asList(pet1,pet2));
 		enderecoRepositoty.saveAll(Arrays.asList(e1, e2));
 
 	}

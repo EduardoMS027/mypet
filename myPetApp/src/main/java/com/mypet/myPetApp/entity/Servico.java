@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Servico implements Serializable{
-	
+	//Para próxima sprint
 
 	private static final long serialVersionUID = 1L;
 

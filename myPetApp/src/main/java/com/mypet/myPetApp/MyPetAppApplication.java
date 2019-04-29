@@ -8,9 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mypet.myPetApp.entity.Endereco;
+
+import com.mypet.myPetApp.entity.PetVet;
 import com.mypet.myPetApp.entity.Petclient;
 import com.mypet.myPetApp.grupos.TipoGrupo;
+
 import com.mypet.myPetApp.repository.EnderecoRepository;
+import com.mypet.myPetApp.repository.PetVetRepository;
 import com.mypet.myPetApp.repository.PetclientRepository;
 
 @SpringBootApplication
@@ -20,6 +24,9 @@ public class MyPetAppApplication implements CommandLineRunner {
 	private PetclientRepository petClientRepository;
 	@Autowired
 	private EnderecoRepository enderecoRepositoty;
+	@Autowired
+	private PetVetRepository petVetRepository;
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(MyPetAppApplication.class, args);
@@ -43,7 +50,15 @@ public class MyPetAppApplication implements CommandLineRunner {
 		
 		petClientRepository.saveAll(Arrays.asList(pet1,pet2));
 		enderecoRepositoty.saveAll(Arrays.asList(e1, e2));
-
+		
+		
+		
+		PetVet petV = new PetVet(null, "Gatos&Cia", "1234567",TipoGrupo.JURIDICA, "cia@gmail.com", "cia1245", 0,"Av, glicerio","126","centro","13012100" );	
+	    petVetRepository.saveAll(Arrays.asList(petV));
+		
+		
+		
+		
 	}
 
 }

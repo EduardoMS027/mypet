@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Historico implements Serializable {
-
+//Para próxima sprint
     private static final long serialVersionUID = 1L;
     
     @Id

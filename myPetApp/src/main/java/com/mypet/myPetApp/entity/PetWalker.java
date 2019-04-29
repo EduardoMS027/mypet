@@ -14,8 +14,8 @@ public class PetWalker extends PetProvider{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String nomeCompleto;
     private String dataNascimento; // "aaaa-mm-dd"
@@ -26,7 +26,8 @@ public class PetWalker extends PetProvider{
     }
 
     public PetWalker(String nomeCompleto, String dataNascimento, String cpf) {
-        this.nomeCompleto = nomeCompleto;
+        super();
+    	this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
     }
@@ -46,7 +47,7 @@ public class PetWalker extends PetProvider{
     /**
      * @return the id
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     /**
@@ -70,7 +71,7 @@ public class PetWalker extends PetProvider{
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     /**

@@ -74,7 +74,7 @@ public class PetclientService {
 
 		Petclient petclient = new Petclient(null, objDto.getEmail(), objDto.getPassword(),
 				TipoGrupo.toEnum(objDto.getTipoPerfil()), objDto.getNomeCompleto(), objDto.getDataNascimento(),
-				objDto.getAvaliacao(), objDto.getCpf());
+			      0,objDto.getCpf());
 		Endereco endereco = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(),
 				objDto.getBairro(), objDto.getCep(), petclient);
 		petclient.getEndereco().add(endereco);

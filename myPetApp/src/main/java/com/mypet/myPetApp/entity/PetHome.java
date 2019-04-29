@@ -12,7 +12,7 @@ public class PetHome extends PetProvider{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     private String nomeCompleto;
     private String dataNascimento; // "aaaa-mm-dd"
@@ -34,7 +34,7 @@ public class PetHome extends PetProvider{
     /**
      * @return the id
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     /**
@@ -64,7 +64,7 @@ public class PetHome extends PetProvider{
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     /**

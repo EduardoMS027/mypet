@@ -28,7 +28,7 @@ public class Petclient implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String password;
@@ -39,11 +39,6 @@ public class Petclient implements Serializable {
     private String cpf;
     
     
-
-    //private Set<Pet> pets;
-
-    
-   // private Set<Endereco> enderecos;
 
     @OneToMany(mappedBy = "petclient",cascade = CascadeType.ALL) // cascade, toda modificação que ocorrer no cliente ocorre em endereço com efeito cascata (quando apgar um cliente apaga um endereço tb)
     private List<Endereco> endereco = new ArrayList<>();

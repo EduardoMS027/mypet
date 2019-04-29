@@ -12,7 +12,7 @@ import com.mypet.myPetApp.service.validation.ClienteUpdate;
 
 
 @ClienteUpdate
-public class PetClientDTO implements Serializable{
+public class PetClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	

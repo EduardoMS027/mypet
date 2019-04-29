@@ -27,7 +27,7 @@ import com.mypet.myPetApp.dto.PetClientInsertDTO;
 import com.mypet.myPetApp.entity.Petclient;
 
 @RestController
-@RequestMapping(value = "/petclientes")
+@RequestMapping(value = "/petclients")
 public class PetclientController {
 
     @Autowired

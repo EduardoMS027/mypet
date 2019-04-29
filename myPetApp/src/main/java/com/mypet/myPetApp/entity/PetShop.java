@@ -12,8 +12,8 @@ public class PetShop extends PetProvider{
 
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nomeRazaoSocial;
     private String cnpj;
 
@@ -29,7 +29,7 @@ public class PetShop extends PetProvider{
     /**
      * @return the id
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     /**
@@ -47,7 +47,7 @@ public class PetShop extends PetProvider{
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     /**

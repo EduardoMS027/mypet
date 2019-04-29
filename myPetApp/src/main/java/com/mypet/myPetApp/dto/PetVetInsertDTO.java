@@ -7,38 +7,38 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.mypet.myPetApp.entity.Endereco;
 import com.mypet.myPetApp.service.validation.ClienteInsert;
+import com.mypet.myPetApp.service.validation.servicos.PetVetInsert;
 
 //Classe destina para cadastro de petclient.
 
-@ClienteInsert
-public class PetClientInsertDTO implements Serializable {
+@PetVetInsert
+public class PetVetInsertDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotEmpty(message = "Preechimento obrigatório")
 	@Email(message = "Email inválido")
-	private String email;
+	private   String email;
 
 	@NotEmpty(message = "Preechimento obrigatório")
-	private String password;
+	private  String password;
 	private Integer tipoPerfil;
 
 	@NotEmpty(message = "Prenchimento obrigatório")
 	@Length(min = 5, max = 120, message = "O tamanho deve ser entre 5 e 120 caracteres")
-	private String nomeCompleto;
+	 private String nomeRazaoSocial;
 	
-	@NotEmpty(message = "Preechimento obrigatório")
-	private String dataNascimento;
-
 	
 
+	
+
 	@NotEmpty(message = "Preechimento obrigatório")
-	private String cpf;
+	 private String cnpj;
 
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String logradouro;
 	private String numero;
-	private String complemento;
 	private String bairro;
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String cep;
@@ -50,10 +50,33 @@ public class PetClientInsertDTO implements Serializable {
 	
 	
 	
-	public PetClientInsertDTO() {
+	public PetVetInsertDTO() {
 		
 	}
 	
+
+	
+	
+	
+	
+	public String getNomeRazaoSocial() {
+		return nomeRazaoSocial;
+	}
+
+
+	public void setNomeRazaoSocial(String nomeRazaoSocial) {
+		this.nomeRazaoSocial = nomeRazaoSocial;
+	}
+
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
 
 	public String getEmail() {
 		return email;
@@ -79,29 +102,6 @@ public class PetClientInsertDTO implements Serializable {
 		this.tipoPerfil = tipoPerfil;
 	}
 
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 
 	public String getLogradouro() {
 		return logradouro;
@@ -119,13 +119,7 @@ public class PetClientInsertDTO implements Serializable {
 		this.numero = numero;
 	}
 
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
+	
 
 	public String getBairro() {
 		return bairro;
@@ -167,4 +161,10 @@ public class PetClientInsertDTO implements Serializable {
 		this.telefone3 = telefone3;
 	}
 
+
+
+
+
+
+	
 }

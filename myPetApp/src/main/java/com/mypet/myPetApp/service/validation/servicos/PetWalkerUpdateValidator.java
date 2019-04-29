@@ -1,4 +1,4 @@
-package com.mypet.myPetApp.service.validation;
+package com.mypet.myPetApp.service.validation.servicos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,25 +11,25 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
-import com.mypet.myPetApp.dto.PetClientDTO;
+import com.mypet.myPetApp.dto.PetWalkerDTO;
 
-import com.mypet.myPetApp.entity.Petclient;
+import com.mypet.myPetApp.entity.PetWalker;
 
-import com.mypet.myPetApp.repository.PetclientRepository;
+import com.mypet.myPetApp.repository.PetWalkerRepository;
 import com.mypet.myPetApp.service.exception.FieldMessage;
 
-public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate, PetClientDTO> {
+public class PetWalkerUpdateValidator implements ConstraintValidator<PetWalkerUpdate, PetWalkerDTO> {
 
 	@Autowired
 	private HttpServletRequest request; // permite pegar o parametro da uri
 	@Autowired
-	private PetclientRepository petClientRepository;
+	private PetWalkerRepository petWalkerRepository;
 
 	@Override
-	public void initialize(ClienteUpdate ann) {
+	public void initialize(PetWalkerUpdate ann) {
 	}
 
-	public boolean isValid(PetClientDTO objDto, ConstraintValidatorContext context) {
+	public boolean isValid(PetWalkerDTO objDto, ConstraintValidatorContext context) {
 
 		@SuppressWarnings("unchecked")
 		Map<String, String> map = (Map<String, String>) request
@@ -39,7 +39,7 @@ public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate
 
 		List<FieldMessage> list = new ArrayList<>();
 
-		Petclient aux = petClientRepository.findByEmail(objDto.getEmail());
+		PetWalker aux = petWalkerRepository.findByEmail(objDto.getEmail());
 		if (aux != null && !aux.getId().equals(uriId)) { // verificando se email já existe
 			list.add(new FieldMessage("Email", "Email já existente"));
 		}

@@ -7,12 +7,13 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.mypet.myPetApp.service.validation.servicos.PetVetInsert;
+import com.mypet.myPetApp.service.validation.servicos.PetHomeInsert;
+
 
 //Classe destina para cadastro de petclient.
 
-@PetVetInsert
-public class PetVetInsertDTO implements Serializable {
+@PetHomeInsert
+public class PetHomeInsertDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotEmpty(message = "Preechimento obrigatório")
@@ -21,14 +22,20 @@ public class PetVetInsertDTO implements Serializable {
 
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String password;
+	
 	private Integer tipoPerfil;
 
 	@NotEmpty(message = "Prenchimento obrigatório")
 	@Length(min = 5, max = 120, message = "O tamanho deve ser entre 5 e 120 caracteres")
-	private String nomeRazaoSocial;
+	private String nomeCompleto;
+	
+	@NotEmpty(message = "Preechimento obrigatório")
+	private String dataNascimento;
+
+	
 
 	@NotEmpty(message = "Preechimento obrigatório")
-	private String cnpj;
+	private String cpfOuCnpj;
 
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String logradouro;
@@ -41,26 +48,13 @@ public class PetVetInsertDTO implements Serializable {
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
-
-	public PetVetInsertDTO() {
-
+	
+	
+	
+	public PetHomeInsertDTO() {
+		
 	}
-
-	public String getNomeRazaoSocial() {
-		return nomeRazaoSocial;
-	}
-
-	public void setNomeRazaoSocial(String nomeRazaoSocial) {
-		this.nomeRazaoSocial = nomeRazaoSocial;
-	}
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -86,6 +80,34 @@ public class PetVetInsertDTO implements Serializable {
 		this.tipoPerfil = tipoPerfil;
 	}
 
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+
+
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
+	}
+
+
+	public void setCpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
+	}
+
+
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -101,6 +123,7 @@ public class PetVetInsertDTO implements Serializable {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+
 
 	public String getBairro() {
 		return bairro;

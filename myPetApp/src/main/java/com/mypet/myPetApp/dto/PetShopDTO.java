@@ -7,11 +7,12 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.mypet.myPetApp.entity.PetVet;
-import com.mypet.myPetApp.service.validation.servicos.PetVetUpdate;
+import com.mypet.myPetApp.entity.PetShop;
 
-@PetVetUpdate
-public class PetVetDTO implements Serializable {
+import com.mypet.myPetApp.service.validation.servicos.PetShopUpdate;
+
+@PetShopUpdate
+public class PetShopDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -29,6 +30,9 @@ public class PetVetDTO implements Serializable {
 	private String nomeRazaoSocial;
 
 	@NotEmpty(message = "Prenchimento obrigatório")
+	private String cnpj;
+
+	@NotEmpty(message = "Prenchimento obrigatório")
 	private String logradouro;
 
 	@NotEmpty(message = "Prenchimento obrigatório")
@@ -39,21 +43,22 @@ public class PetVetDTO implements Serializable {
 	@NotEmpty(message = "Prenchimento obrigatório")
 	private String cep;
 
-	public PetVetDTO() {
+	public PetShopDTO() {
 
 	}
 
-	public PetVetDTO(PetVet petVet) {
+	public PetShopDTO(PetShop petShop) {
 		super();
-		this.id = petVet.getId();
-		this.email = petVet.getEmail();
-		this.password = petVet.getPassword();
-		this.avaliacao = petVet.getAvaliacao();
-		this.nomeRazaoSocial = petVet.getNomeRazaoSocial();
-		this.logradouro = petVet.getLogradouro();
-		this.numero = petVet.getNumero();
-		this.bairro = petVet.getBairro();
-		this.cep = petVet.getCep();
+		this.id = petShop.getId();
+		this.email = petShop.getEmail();
+		this.password = petShop.getPassword();
+		this.avaliacao = petShop.getAvaliacao();
+		this.nomeRazaoSocial = petShop.getNomeRazaoSocial();
+		this.cnpj = petShop.getCnpj();
+		this.logradouro = petShop.getLogradouro();
+		this.numero = petShop.getNumero();
+		this.bairro = petShop.getBairro();
+		this.cep = petShop.getCep();
 	}
 
 	public Integer getId() {
@@ -96,6 +101,13 @@ public class PetVetDTO implements Serializable {
 		this.nomeRazaoSocial = nomeRazaoSocial;
 	}
 
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
 
 	public String getLogradouro() {
 		return logradouro;

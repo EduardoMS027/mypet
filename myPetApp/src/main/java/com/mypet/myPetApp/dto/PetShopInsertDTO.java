@@ -7,12 +7,12 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.mypet.myPetApp.service.validation.servicos.PetVetInsert;
+import com.mypet.myPetApp.service.validation.servicos.PetShopInsert;
 
 //Classe destina para cadastro de petclient.
 
-@PetVetInsert
-public class PetVetInsertDTO implements Serializable {
+@PetShopInsert
+public class PetShopInsertDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotEmpty(message = "Preechimento obrigatório")
@@ -42,7 +42,7 @@ public class PetVetInsertDTO implements Serializable {
 	private String telefone2;
 	private String telefone3;
 
-	public PetVetInsertDTO() {
+	public PetShopInsertDTO() {
 
 	}
 

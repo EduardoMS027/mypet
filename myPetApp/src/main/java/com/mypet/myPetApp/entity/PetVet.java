@@ -1,19 +1,17 @@
 package com.mypet.myPetApp.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.HashSet;
-import java.util.List;
+
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.mypet.myPetApp.grupos.TipoGrupo;
 
@@ -25,7 +23,7 @@ public class PetVet implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nomeRazaoSocial;
 	private String cnpj;
 	private Integer tipoPerfil;
@@ -37,9 +35,6 @@ public class PetVet implements Serializable {
 	private String bairro;
 	private String cep;
 
-
-
-
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE_PETVET") // nome da tabela
 	private Set<String> telefones = new HashSet<>();// permite não repetir valores(represanta os conjuntos de valores )
@@ -49,7 +44,7 @@ public class PetVet implements Serializable {
 	}
 
 	public PetVet(Integer id, String nomeRazaoSocial, String cnpj, TipoGrupo tipoPerfil, String email, String password,
-			int avaliacao,String logradouro,String numero,String bairro,String cep) {
+			int avaliacao, String logradouro, String numero, String bairro, String cep) {
 		super();
 		this.id = id;
 		this.nomeRazaoSocial = nomeRazaoSocial;
@@ -64,8 +59,6 @@ public class PetVet implements Serializable {
 		this.cep = cep;
 
 	}
-
-	
 
 	public Integer getTipoPerfil() {
 		return tipoPerfil;
@@ -109,8 +102,6 @@ public class PetVet implements Serializable {
 	public void setNomeRazaoSocial(String nomeRazaoSocial) {
 		this.nomeRazaoSocial = nomeRazaoSocial;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -183,6 +174,5 @@ public class PetVet implements Serializable {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
 
 }

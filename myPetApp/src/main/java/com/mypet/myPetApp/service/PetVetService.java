@@ -8,14 +8,14 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import com.mypet.myPetApp.dto.PetVetDTO;
 import com.mypet.myPetApp.dto.PetVetInsertDTO;
-import com.mypet.myPetApp.entity.Endereco;
+
 
 
 import com.mypet.myPetApp.entity.PetVet;
 
 import com.mypet.myPetApp.grupos.TipoGrupo;
 
-import com.mypet.myPetApp.repository.EnderecoRepository;
+
 import com.mypet.myPetApp.repository.PetVetRepository;
 import com.mypet.myPetApp.service.exceptions.DataInternalException;
 
@@ -73,7 +73,7 @@ public class PetVetService {
 															// DTO
 
 		PetVet petVet = new PetVet(null, objDto.getNomeRazaoSocial(), objDto.getCnpj(),TipoGrupo.toEnum(objDto.getTipoPerfil()),objDto.getEmail(), objDto.getPassword(),
-				         0,objDto.getBairro(),objDto.getLogradouro(),objDto.getNumero(),objDto.getCep());
+				         0,objDto.getLogradouro(),objDto.getNumero(), objDto.getBairro(),objDto.getCep());
 	
 	
 		petVet.getTelefones().add(objDto.getTelefone1());

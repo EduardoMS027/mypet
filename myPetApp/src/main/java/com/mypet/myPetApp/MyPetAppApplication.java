@@ -36,7 +36,7 @@ public class MyPetAppApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Petclient pet1 = new Petclient(null, "Yuricesarr@gmail.com", "12345", TipoGrupo.CLIENTE, "Yur1 Cesar", "210405", 0, null);
+		/*Petclient pet1 = new Petclient(null, "Yuricesarr@gmail.com", "12345", TipoGrupo.CLIENTE, "Yur1 Cesar", "210405", 0, null);
 		//petClientRepository.save(pet1);
 
 		Petclient pet2 = new Petclient(null, "ronaldinho@gmail.com", "r10", TipoGrupo.CLIENTE, "ronaldinho brilha", "210405", 0, null);
@@ -54,7 +54,7 @@ public class MyPetAppApplication implements CommandLineRunner {
 		
 		
 		PetVet petV = new PetVet(null, "Gatos&Cia", "1234567",TipoGrupo.JURIDICA, "cia@gmail.com", "cia1245", 0,"Av, glicerio","126","centro","13012100" );	
-	    petVetRepository.saveAll(Arrays.asList(petV));
+	    petVetRepository.saveAll(Arrays.asList(petV));*/
 		
 		
 		

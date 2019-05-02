@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mypet.myPetApp.grupos.TipoGrupo;
 import org.hibernate.validator.constraints.Length;
 
 import com.mypet.myPetApp.service.validation.ClienteInsert;
@@ -52,6 +55,29 @@ public class PetClientInsertDTO implements Serializable {
 	
 	public PetClientInsertDTO() {
 		
+	}
+
+	@JsonCreator
+	public PetClientInsertDTO(@JsonProperty("email") String email, @JsonProperty("password") String password,
+					 @JsonProperty("tipoPerfil") Integer tipoPerfil, @JsonProperty("nomeCompleto") String nomeCompleto,
+					 @JsonProperty("dataNascimento") String dataNascimento, @JsonProperty("avaliacao") int avaliacao,
+					 @JsonProperty("cpf") String cpf, @JsonProperty("telefone1")String telefone1,
+							  @JsonProperty("telefone1")String telefone2, @JsonProperty("logradouro")String logradouro,
+							  @JsonProperty("numero")String numero, @JsonProperty("complemento")String complemento,
+							  @JsonProperty("cep")String cep) {
+		this.email = email;
+		this.password = password;
+		this.tipoPerfil = tipoPerfil;
+		this.nomeCompleto = nomeCompleto;
+		this.cpf = cpf;
+		this.telefone1 = telefone1;
+		this.telefone2 = telefone2;
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.complemento = complemento;
+		this.cep = cep;
+
+
 	}
 	
 

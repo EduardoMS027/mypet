@@ -51,7 +51,7 @@ public class PetclientController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST, produces = { "application/json" }, consumes = { "application/json" })
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody PetClientInsertDTO objDto) { // requestBody faz o json ser convertido para obj
 																		// java automaticamente
 		Petclient obj = service.fromDto(objDto);//coverto Dto para objeto entidade

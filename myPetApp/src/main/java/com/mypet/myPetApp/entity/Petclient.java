@@ -17,9 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.mypet.myPetApp.grupos.TipoGrupo;
 
 
@@ -61,22 +59,22 @@ public class Petclient implements Serializable {
 
     }
 
- 
-    @JsonCreator
-    public Petclient(@JsonProperty("id") Integer id, @JsonProperty("email") String email, @JsonProperty("password") String password,
-                     @JsonProperty("tipoPerfil") TipoGrupo tipoPerfil, @JsonProperty("nomeCompleto") String nomeCompleto,
-                     @JsonProperty("dataNascimento") String dataNascimento, @JsonProperty("avaliacao") int avaliacao,
-                     @JsonProperty("cpf") String cpf) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.tipoPerfil = (tipoPerfil==null) ? null : tipoPerfil.getCod(); //operador ternario ..  na intaciação não aceita nullo precisa de uma condicional por conta do getCod
-		this.nomeCompleto = nomeCompleto;
-		this.dataNascimento = dataNascimento;
-		this.avaliacao = avaliacao;
-		this.cpf = cpf;
-	}
+
+
+    public Petclient(Integer id, String email, String password, TipoGrupo tipoPerfil, String nomeCompleto, String dataNascimento,
+                     int avaliacao, String cpf) {
+        super();
+	    this.id = id;
+        this.email = email;
+        this.password = password;
+        this.tipoPerfil = (tipoPerfil==null) ? null : tipoPerfil.getCod(); //operador ternario ..  na intaciação não aceita nullo precisa de uma condicional por conta do getCod
+        this.nomeCompleto = nomeCompleto;
+        this.dataNascimento = dataNascimento;
+        this.avaliacao = avaliacao;
+        this.cpf = cpf;
+    }
+
+
 
 
 

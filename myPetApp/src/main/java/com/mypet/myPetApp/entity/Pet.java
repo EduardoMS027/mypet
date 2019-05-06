@@ -13,7 +13,7 @@ import com.mypet.myPetApp.entity.Petclient;
 public class Pet implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+    //Não terá controller, objeto de um petclient.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

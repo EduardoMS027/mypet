@@ -63,8 +63,9 @@ public class PetclientService {
 
 	public Petclient fromDto(PetClientDTO objDto) { // metado auxiliar que instacia uma categoria a partir de um DTO
 
-		return new Petclient(objDto.getId(), objDto.getEmail(), objDto.getPassword(),null,objDto.getNomeCompleto(), objDto.getDataNascimento(), 0, null); // nulo porque não temos os
-		// daddos no DTO
+		return new Petclient(objDto.getId(), objDto.getEmail(), objDto.getPassword(), null, objDto.getNomeCompleto(),
+				objDto.getDataNascimento(), 0, null);
+		// nulo porque não temos os dados no DTO
 
 	}
 
@@ -73,7 +74,7 @@ public class PetclientService {
 
 		Petclient petclient = new Petclient(null, objDto.getEmail(), objDto.getPassword(),
 				TipoGrupo.toEnum(objDto.getTipoPerfil()), objDto.getNomeCompleto(), objDto.getDataNascimento(),
-				objDto.getAvaliacao(), objDto.getCpf());
+			      0,objDto.getCpf());
 		Endereco endereco = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(),
 				objDto.getBairro(), objDto.getCep(), petclient);
 		petclient.getEndereco().add(endereco);
@@ -91,13 +92,12 @@ public class PetclientService {
 	}
 
 	private void updateData(Petclient newObj, Petclient obj) { // metado aux para atualizar os campos do cliente,
-		
-		
+
 		newObj.setEmail(obj.getEmail());// pegando o novo e colocando no antigo
 		newObj.setPassword(obj.getPassword());
 		newObj.setNomeCompleto(obj.getNomeCompleto());
 		newObj.setDataNascimento(obj.getDataNascimento());
-		
+
 	}
 
 }

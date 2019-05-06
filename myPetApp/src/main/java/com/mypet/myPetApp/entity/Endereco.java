@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Endereco  implements Serializable{
-
+//Não precisa de controller
 
 	private static final long serialVersionUID = 1L;
 	
@@ -35,6 +35,12 @@ public class Endereco  implements Serializable{
 	@JoinColumn(name = "petclient_id")
 	private Petclient petclient;
 	
+	
+	
+	
+	
+
+	
 	@OneToMany(mappedBy = "enderecoServico")
 	private List<Servico> enderecoServico = new ArrayList<Servico>();
 	
@@ -44,7 +50,7 @@ public class Endereco  implements Serializable{
 
 	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro,
 			String cep, Petclient petclient) {
-		super();
+
 		this.id = id;
 		this.logradouro = logradouro;
 		this.numero = numero;
@@ -54,6 +60,8 @@ public class Endereco  implements Serializable{
 		this.petclient = petclient;
 		
 	}
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -137,7 +145,8 @@ public class Endereco  implements Serializable{
 	}
 
 	
-	
-	
+
+
+		
 
 }

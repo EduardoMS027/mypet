@@ -17,8 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import com.mypet.myPetApp.grupos.TipoGrupo;
 
 
@@ -28,7 +27,7 @@ public class Petclient implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String password;
@@ -39,11 +38,6 @@ public class Petclient implements Serializable {
     private String cpf;
     
     
-
-    //private Set<Pet> pets;
-
-    
-   // private Set<Endereco> enderecos;
 
     @OneToMany(mappedBy = "petclient",cascade = CascadeType.ALL) // cascade, toda modificação que ocorrer no cliente ocorre em endereço com efeito cascata (quando apgar um cliente apaga um endereço tb)
     private List<Endereco> endereco = new ArrayList<>();
@@ -65,20 +59,22 @@ public class Petclient implements Serializable {
 
     }
 
- 
 
-    public Petclient(Integer id, String email, String password, TipoGrupo tipoPerfil, String nomeCompleto,
-    		String dataNascimento, int avaliacao,String cpf) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.tipoPerfil = (tipoPerfil==null) ? null : tipoPerfil.getCod(); //operador ternario ..  na intaciação não aceita nullo precisa de uma condicional por conta do getCod
-		this.nomeCompleto = nomeCompleto;
-		this.dataNascimento = dataNascimento;
-		this.avaliacao = avaliacao;
-		this.cpf = cpf;
-	}
+
+    public Petclient(Integer id, String email, String password, TipoGrupo tipoPerfil, String nomeCompleto, String dataNascimento,
+                     int avaliacao, String cpf) {
+        super();
+	    this.id = id;
+        this.email = email;
+        this.password = password;
+        this.tipoPerfil = (tipoPerfil==null) ? null : tipoPerfil.getCod(); //operador ternario ..  na intaciação não aceita nullo precisa de uma condicional por conta do getCod
+        this.nomeCompleto = nomeCompleto;
+        this.dataNascimento = dataNascimento;
+        this.avaliacao = avaliacao;
+        this.cpf = cpf;
+    }
+
+
 
 
 

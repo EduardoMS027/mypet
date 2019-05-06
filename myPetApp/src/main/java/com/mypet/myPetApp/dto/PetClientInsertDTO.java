@@ -5,9 +5,14 @@ import java.io.Serializable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mypet.myPetApp.grupos.TipoGrupo;
 import org.hibernate.validator.constraints.Length;
 
 import com.mypet.myPetApp.service.validation.ClienteInsert;
+
+//Classe destina para cadastro de petclient.
 
 @ClienteInsert
 public class PetClientInsertDTO implements Serializable {
@@ -28,7 +33,7 @@ public class PetClientInsertDTO implements Serializable {
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String dataNascimento;
 
-	private int avaliacao;
+	
 
 	@NotEmpty(message = "Preechimento obrigatório")
 	private String cpf;
@@ -51,7 +56,8 @@ public class PetClientInsertDTO implements Serializable {
 	public PetClientInsertDTO() {
 		
 	}
-	
+
+
 
 	public String getEmail() {
 		return email;
@@ -91,14 +97,6 @@ public class PetClientInsertDTO implements Serializable {
 
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public int getAvaliacao() {
-		return avaliacao;
-	}
-
-	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
 	}
 
 	public String getCpf() {

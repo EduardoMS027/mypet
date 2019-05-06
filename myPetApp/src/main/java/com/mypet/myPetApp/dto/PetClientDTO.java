@@ -2,15 +2,31 @@ package com.mypet.myPetApp.dto;
 
 import java.io.Serializable;
 
-import com.mypet.myPetApp.entity.Petclient;
+import javax.persistence.Column;
 
-public class PetClientDTO implements Serializable{
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.NotEmpty;
+
+import com.mypet.myPetApp.entity.Petclient;
+import com.mypet.myPetApp.service.validation.ClienteUpdate;
+
+
+@ClienteUpdate
+public class PetClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
 	    private Integer id;
+	   
+	    @Column(unique = true) // deixa campo como unico no banco de dados
 	    private String email;
+	    
+	    @NotEmpty(message = "Prenchimento obrigatório")
+		@Length(min=5,max=120, message = "O tamanho deve ser entre 5 e 120 caracteres")
 	    private String nomeCompleto;
+	    
+	    @NotEmpty(message = "Prenchimento obrigatório")
+		@Length(min=5,max=8, message = "O tamanho deve ser entre 5 e 8 caracteres")
 	    private String password;
 	    private String dataNascimento;
 	   

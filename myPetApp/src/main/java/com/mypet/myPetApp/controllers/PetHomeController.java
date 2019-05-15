@@ -28,7 +28,7 @@ import com.mypet.myPetApp.entity.PetHome;
 
 
 @RestController
-@RequestMapping(value = "/pethomes")
+@RequestMapping(value = "/pethome")
 public class PetHomeController {
 
 	@Autowired

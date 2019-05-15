@@ -2,12 +2,15 @@ package com.mypet.myPetApp;
 
 import java.util.Arrays;
 
+import com.mypet.myPetApp.entity.PetHome;
+import com.mypet.myPetApp.repository.PetHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mypet.myPetApp.entity.Endereco;
+import com.mypet.myPetApp.entity.PetHome;
 
 import com.mypet.myPetApp.entity.PetVet;
 import com.mypet.myPetApp.entity.Petclient;
@@ -26,6 +29,8 @@ public class MyPetAppApplication implements CommandLineRunner {
 	private EnderecoRepository enderecoRepositoty;
 	@Autowired
 	private PetVetRepository petVetRepository;
+	@Autowired
+	private PetHomeRepository petHomeRepository;
 	
 
 	public static void main(String[] args) {
@@ -42,6 +47,7 @@ public class MyPetAppApplication implements CommandLineRunner {
 		Petclient pet2 = new Petclient(null, "ronaldinho@gmail.com", "r10", TipoGrupo.CLIENTE, "ronaldinho brilha", "210405", 0, null);
 		//petClientRepository.save(pet2);
 
+
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", pet2);
 		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "centro", "8777012", pet1);
 		
@@ -50,11 +56,14 @@ public class MyPetAppApplication implements CommandLineRunner {
 		
 		petClientRepository.saveAll(Arrays.asList(pet1,pet2));
 		enderecoRepositoty.saveAll(Arrays.asList(e1, e2));
-		
-		
-		
+
+
+		PetVet varPetVet = new PetVet(null, "RazaSocial", "cnpj", TipoGrupo.JURIDICA, "email@teste.com", "password", 0, "logradouro","numero", "bairro", "cep");
 		PetVet petV = new PetVet(null, "Gatos&Cia", "1234567",TipoGrupo.JURIDICA, "cia@gmail.com", "cia1245", 0,"Av, glicerio","126","centro","13012100" );	
 	    petVetRepository.saveAll(Arrays.asList(petV));
+	    petVetRepository.saveAll(Arrays.asList(varPetVet));
+
+		//PetHome varPetHome = new PetHome(null, "NomePethome", "27/01/1997", "469.820.628.64");
 		
 		
 		

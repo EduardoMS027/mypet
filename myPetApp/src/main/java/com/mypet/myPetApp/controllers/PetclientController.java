@@ -41,7 +41,7 @@ public class PetclientController {
 		return ResponseEntity.ok().body(listDto);
 
 	}
-    
+	@CrossOrigin
     @RequestMapping(value = "/{id}", method = RequestMethod.GET) // para bater em um end pont com id
 	public ResponseEntity<Petclient> find(@PathVariable Integer id) {
 
@@ -61,6 +61,7 @@ public class PetclientController {
 
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody PetClientDTO objDto, @PathVariable Integer id) {// receber o obejto json e
 																								// tambem o parametro da
